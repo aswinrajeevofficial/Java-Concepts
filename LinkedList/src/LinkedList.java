@@ -23,6 +23,25 @@ public class LinkedList {
 		System.out.println("\nInserting new node (12) at position 2");
 		list.insertAtPosition(12, 2);
 		list.printLinkedList();
+		System.out.println("\nDelete head");
+		list.deleteHead();
+		list.printLinkedList();
+		System.out.println("\nDelete from position 2 (12)");
+		list.deleteFromPos(2);
+		list.printLinkedList();
+		
+		
+		//Inserting a few more nodes before reversing the linked list
+		System.out.println("\nInserting a few more nodes before reversing the linked list");
+		list.insertAtPosition(9, 1);
+		list.insertAtPosition(14, 2);
+		list.insertAtPosition(15, 3);
+		list.printLinkedList();
+		
+		
+		System.out.println("\nReversing LinkedList");
+		list.reverseLinkedList();
+		list.printLinkedList();
 	}
 	
 	public void printLinkedList() {
@@ -45,11 +64,41 @@ public class LinkedList {
 		//Let us insert 12 in position 2 (0->1->2)
 		Node node = new Node(data);
 		Node curr = head;
-		while(pos >= 1) {
+		while(pos >= 2) {
 			curr = curr.getNext();
 			pos-=1;
 		}
 		node.setNext(curr.getNext());
 		curr.setNext(node);
+	}
+	
+	public void deleteHead() {
+		if(head.getNext() == null) {
+			head = null;
+		}
+		else {
+			head = head.getNext();
+		}
+	}
+	
+	public void deleteFromPos(int pos) {
+		Node curr = head;
+		while(pos >= 2) {
+			curr = curr.getNext();
+			pos -= 1;
+		}		
+		curr.setNext(curr.getNext().getNext());
+		curr.getNext().setNext(null);
+	}
+	
+	public void reverseLinkedList() {
+		Node curr = head, next = null, prev = null;
+		while(curr != null) {
+			next = curr.getNext();
+			curr.setNext(prev);
+			prev = curr;
+			curr = next;
+		}
+		head = prev;
 	}
 }
