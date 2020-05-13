@@ -22,6 +22,15 @@ public class Tree {
 		tree.printPreOrder(tree.root);
 		System.out.println("\nPostorder");
 		tree.printPostOrder(tree.root);
+		System.out.println("\nSearch for element");
+		Node node = tree.searchNode(tree.root, 1);
+		if(null == node) {
+			System.out.println("Node not found");
+		}
+		else {
+			System.out.println("Element Found: " + node.getData());
+		}
+		
 	}
 
 	public void insertNode(int data) {
@@ -74,5 +83,13 @@ public class Tree {
 			printPostOrder(root.getRight());
 			System.out.print(root.getData() + " -> ");			
 		}
+	}
+	
+	public Node searchNode(Node root, int data) {
+		if(root == null || root.getData() == data)
+			return root;
+		if(data < root.getData())
+			return searchNode(root.getLeft(), data);
+		return searchNode(root.getRight(), data);
 	}
 }
