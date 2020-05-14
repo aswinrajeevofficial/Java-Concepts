@@ -110,7 +110,7 @@ public class LinkedList {
 	public void detectLoop() {
 		//13->12->15->14->9->10->
 		Node curr1 = head, curr2 = head;
-		while(curr1 != null && curr2.getNext() != null && curr2 != null) {
+		while(curr1 != null && curr2 != null && curr2.getNext() != null) {
 			curr1 = curr1.getNext();
 			curr2 = curr2.getNext().getNext();
 			if(curr1 == curr2) {
