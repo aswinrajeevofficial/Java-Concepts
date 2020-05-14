@@ -42,6 +42,11 @@ public class LinkedList {
 		System.out.println("\nReversing LinkedList");
 		list.reverseLinkedList();
 		list.printLinkedList();
+		
+		//Adding a loop to the linked list
+		System.out.println("\nChecking for loop");
+		list.head.getNext().getNext().getNext().getNext().getNext().setNext(list.head.getNext().getNext().getNext().getNext());
+		list.detectLoop();
 	}
 	
 	public void printLinkedList() {
@@ -100,5 +105,20 @@ public class LinkedList {
 			curr = next;
 		}
 		head = prev;
+	}
+	
+	public void detectLoop() {
+		//13->12->15->14->9->10->
+		Node curr1 = head, curr2 = head;
+		while(curr1 != null && curr2.getNext() != null && curr2 != null) {
+			curr1 = curr1.getNext();
+			curr2 = curr2.getNext().getNext();
+			if(curr1 == curr2) {
+				System.out.println("Loop found");
+				return;
+			}
+		}
+		System.out.println("Loop not found");
+		
 	}
 }
