@@ -32,7 +32,12 @@ public class Tree {
 		}
 		System.out.println("Height of tree");
 		System.out.println(tree.heightOfTree(tree.root));
+		int height = tree.heightOfTree(tree.root);
 		
+		//Level Order Traversal
+		for(int i = 1; i <= height+1; i++) {
+			tree.levelOrderTraversal(tree.root, i);	
+		}		
 	}
 
 	public void insertNode(int data) {
@@ -105,6 +110,21 @@ public class Tree {
 			
 			int finalDepth = leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1;
 			return finalDepth;
+		}
+	}
+	
+	public void levelOrderTraversal(Node root, int level) {
+		if(root == null) {
+			return;
+		}
+		else {
+			if(level == 1) {
+				System.out.print(root.getData() + " ");
+			}
+			else {
+				levelOrderTraversal(root.getLeft(), level-1);
+				levelOrderTraversal(root.getRight(), level-1);
+			}
 		}
 	}
 }
