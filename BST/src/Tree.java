@@ -30,6 +30,8 @@ public class Tree {
 		else {
 			System.out.println("Element Found: " + node.getData());
 		}
+		System.out.println("Height of tree");
+		System.out.println(tree.heightOfTree(tree.root));
 		
 	}
 
@@ -91,5 +93,18 @@ public class Tree {
 		if(data < root.getData())
 			return searchNode(root.getLeft(), data);
 		return searchNode(root.getRight(), data);
+	}
+	
+	public int heightOfTree(Node root) {
+		if(root == null) {
+			return -1;
+		}
+		else {
+			int leftDepth = heightOfTree(root.getLeft());
+			int rightDepth = heightOfTree(root.getRight());
+			
+			int finalDepth = leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1;
+			return finalDepth;
+		}
 	}
 }
