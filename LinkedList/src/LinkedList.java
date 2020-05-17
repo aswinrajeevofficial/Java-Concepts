@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class LinkedList {
 
@@ -47,6 +48,39 @@ public class LinkedList {
 		System.out.println("\nChecking for loop");
 		list.head.getNext().getNext().getNext().getNext().getNext().setNext(list.head.getNext().getNext().getNext().getNext());
 		list.detectLoop();
+		
+		
+		//Finding merge point of two linked lists
+		/*
+		 * [List #1] a--->b--->c
+                     \
+                      x--->y--->z--->NULL
+                     /
+     		[List #2] p--->q
+		 */
+		LinkedList list2 = new LinkedList();
+		
+		Node list2node1 = new Node(10);
+		Node list2node2 = new Node(20);
+		Node list2node3 = new Node(30);
+		
+		list2.head = list2node1;
+		list2node1.setNext(list2node2);
+		list2node2.setNext(list2node3);
+		
+		LinkedList list3 = new LinkedList();
+		Node list3node1 = new Node(40);
+		
+		list3.head = list3node1;
+		list3node1.setNext(list2node2);
+		
+		System.out.println("List 2: ");
+		list2.printLinkedList();
+		
+		System.out.println("\nList 3: ");
+		list3.printLinkedList();
+		
+		System.out.println("\nMerge point of two lists: " + findMergeNode(list2.head, list3.head));
 	}
 	
 	public void printLinkedList() {
@@ -121,4 +155,23 @@ public class LinkedList {
 		System.out.println("Loop not found");
 		
 	}
+	
+	public static int findMergeNode(Node head1, Node head2) {
+        HashMap<Node, Integer> hashMap = new HashMap<>();
+        Integer returnData = 0;
+        Node curr2 = head2;
+        while(curr2 != null){
+            hashMap.put(curr2, curr2.getData());
+            curr2 = curr2.getNext();
+        }
+        Node curr1 = head1;
+        while(curr1 != null){
+            if(hashMap.containsKey(curr1)){
+                returnData = curr1.getData();
+                break;
+            }
+            curr1 = curr1.getNext();
+        }
+        return returnData;
+    }
 }
