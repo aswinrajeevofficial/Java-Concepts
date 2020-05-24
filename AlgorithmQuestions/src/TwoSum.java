@@ -2,9 +2,10 @@ import java.util.HashMap;
 
 public class TwoSum {
 
-	public static int[] twoSumFunction(int[] arr, int target) {
+	public static String twoSumFunction(int[] arr, int target) {
 		int returnValue[] = new int[2];
 		HashMap<Integer, Integer> valueMap = new HashMap<>();
+		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i < arr.length; i++) {
 			valueMap.put(target-arr[i], arr[i]);
 //			int diff = target - arr[i];
@@ -18,21 +19,21 @@ public class TwoSum {
 		for(int i = 0; i < arr.length; i++) {
 			if(valueMap.containsKey(arr[i])) {
 				if(valueMap.containsKey(valueMap.get(arr[i]))){
-					return new int[] { arr[i], valueMap.get(arr[i]) };
+					sb.append("{" + arr[i] + "," + valueMap.get(arr[i]) + "}");
+					valueMap.remove(arr[i]);
+					//return new int[] { arr[i], valueMap.get(arr[i]) };
 					//returnValue[0] = arr[i];
 					//returnValue[1] = valueMap.get(arr[i]);
 				}
 			}
 				
 		}
-		return returnValue;
+		return sb.toString();
 	}
 	public static void main(String[] args) {
 		int nums[] = {3, 5, 2, -4, 8, 11};
 		int target = 7;
-		
-		int[] numbers = twoSumFunction(nums, target);
-		System.out.println(numbers[0] + " " + numbers[1]);
+		System.out.println(twoSumFunction(nums, target));
 	}
 }
 
