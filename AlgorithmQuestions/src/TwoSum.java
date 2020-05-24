@@ -6,21 +6,33 @@ public class TwoSum {
 		int returnValue[] = new int[2];
 		HashMap<Integer, Integer> valueMap = new HashMap<>();
 		for(int i = 0; i < arr.length; i++) {
-			valueMap.put(arr[i], arr[i] - target);
+			valueMap.put(target-arr[i], arr[i]);
+//			int diff = target - arr[i];
+//			if(valueMap.containsKey(diff)) {
+//				returnValue[0] = valueMap.get(diff);
+//				returnValue[1] = i;
+//			}
+//			else
+//				valueMap.put(arr[i], i);
 		}
 		for(int i = 0; i < arr.length; i++) {
-			if(valueMap.containsValue(arr[i] - target))
-				returnValue[0] = arr[i];
+			if(valueMap.containsKey(arr[i])) {
+				if(valueMap.containsKey(valueMap.get(arr[i]))){
+					return new int[] { arr[i], valueMap.get(arr[i]) };
+					//returnValue[0] = arr[i];
+					//returnValue[1] = valueMap.get(arr[i]);
+				}
+			}
+				
 		}
 		return returnValue;
 	}
 	public static void main(String[] args) {
-		int nums[] = {2, 7, 11, 15};
-		int target = 9;
+		int nums[] = {3, 5, 2, -4, 8, 11};
+		int target = 7;
 		
 		int[] numbers = twoSumFunction(nums, target);
-		System.out.println("Numbers that make the target value of " + target
-				+ " are: " + nums[numbers[0]] + " and " + nums[numbers[1]]);
+		System.out.println(numbers[0] + " " + numbers[1]);
 	}
 }
 
