@@ -6,7 +6,7 @@ public class CoinChange2 {
 		numOfWays[0] = 1;
 		
 		for(int coin: coins) {
-			for(int i = 0; i < numOfWays.length; i++) {
+			for(int i = 1; i < numOfWays.length; i++) {
 				if(coin <= i) {
 					numOfWays[i] = numOfWays[i] + numOfWays[i - coin];
 				}
@@ -17,7 +17,7 @@ public class CoinChange2 {
 	
 	public static void main (String[] args)  
     { 
-        int coins[] = {1,5,10}; 
+        int coins[] = {1,2,5}; 
         int length = coins.length; 
         int amount = 12; 
         System.out.println("Number of ways to make " + amount + " is " + numberOfWays(coins, length, amount)); 

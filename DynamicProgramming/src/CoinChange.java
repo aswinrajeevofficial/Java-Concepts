@@ -9,7 +9,7 @@ Below is the solution to the first version of the problem.
 
 public class CoinChange {
 	
-	static int minCoins(int denoms[], int length, int amount) {
+	static int minCoins(int coins[], int length, int amount) {
 		/*
 		We will create an array of amounts that will store 0 to amount+1
 		Each index of the amounts table will denote the number of coins required
@@ -24,10 +24,10 @@ public class CoinChange {
 		}
 		
 		for(int i = 1; i <= amount; i++) {
-			for(int denom: denoms) {
-				System.out.println("i value: " + i + " coin value: " + denom);
-				if(denom <= i) {
-					numOfCoins[i] = Math.min(numOfCoins[i], 1 + numOfCoins[i - denom]);
+			for(int coin: coins) {
+				System.out.println("i value: " + i + " coin value: " + coin);
+				if(coin <= i) {
+					numOfCoins[i] = Math.min(numOfCoins[i], 1 + numOfCoins[i - coin]);
 				}
 			}
 		}
