@@ -19,7 +19,7 @@ public class CoinChange2 {
     { 
         int coins[] = {1,2,5}; 
         int length = coins.length; 
-        int amount = 12; 
+        int amount = 5; 
         System.out.println("Number of ways to make " + amount + " is " + numberOfWays(coins, length, amount)); 
     }
 }
