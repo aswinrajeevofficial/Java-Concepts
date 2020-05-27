@@ -6,7 +6,7 @@ public class CoinChange2 {
 		numOfWays[0] = 1;
 		
 		for(int coin: coins) {
-			for(int i = 1; i < numOfWays.length; i++) {
+			for(int i = 1; i <= amount; i++) {
 				if(coin <= i) {
 					numOfWays[i] = numOfWays[i] + numOfWays[i - coin];
 				}
