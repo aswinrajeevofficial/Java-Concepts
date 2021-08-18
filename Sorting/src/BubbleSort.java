@@ -25,7 +25,7 @@ public class BubbleSort {
 		}
 	}
 }
-
+//Added a comment here
 /*
 Explanation of Bubble Sort:
 Initial Array: [5, 4, 2, 6, 1]
